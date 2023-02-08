@@ -13,4 +13,10 @@ export class CategoriesRepository {
   async getAll() {
     return this.categories;
   }
+
+  async create(category: any) {
+    this.categories.push(category);
+
+    return category;
+  }
 }
