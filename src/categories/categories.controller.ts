@@ -1,7 +1,9 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
+  HttpCode,
   NotFoundException,
   Param,
   Post,
@@ -57,5 +59,11 @@ export class CategoriesController {
     return {
       data: category,
     };
+  }
+
+  @Delete('/:id')
+  @HttpCode(204)
+  async destroy(@Param('id') id: string) {
+    await this.categoryRepository.deleteById(id);
   }
 }

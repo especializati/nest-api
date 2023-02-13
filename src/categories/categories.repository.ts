@@ -43,4 +43,15 @@ export class CategoriesRepository {
 
     return category;
   }
+
+  async deleteById(id: string) {
+    const category = await this.findById(id);
+    if (category === undefined) {
+      throw new NotFoundException('Category Not Found');
+    }
+
+    this.categories = this.categories.filter(
+      (categoryItem) => categoryItem.id !== id,
+    );
+  }
 }
